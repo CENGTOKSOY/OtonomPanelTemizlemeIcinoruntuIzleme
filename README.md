@@ -44,7 +44,7 @@ Kodu Çalıştırın:
 
 bash
 Kodu kopyala
-python3 robot_cleaning.py
+python3 SolarPanelCleanRobot.py
 
 Kod Açıklaması
 
