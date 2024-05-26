@@ -20,6 +20,21 @@ class Robot:
         self.setup_gpio()
 
 
+    def setup_gpio(self):
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setup(list(self.motor_pins.values()), GPIO.OUT)
+        GPIO.setup(self.water_pump_pin, GPIO.OUT)
+
+    def move_robot(self, direction, duration=0):
+        if direction == "ileri":
+            print("Robot ileri hareket ediyor...")
+            self.set_motor_direction("ileri")
+        elif direction == "geri":
+            print("Robot geri hareket ediyor...")
+            self.set_motor_direction("geri")
+        elif direction == "dur":
+            self.stop_all_motors()
+            return
 
         self.activate_motors(["DC Motor 1", "DC Motor 2", "DC Motor 3", "DC Motor 4"])
         if duration > 0:
