@@ -41,25 +41,7 @@ class Robot:
             time.sleep(duration)
             self.stop_all_motors()
 
-    def set_motor_direction(self, direction):
-        if direction == "ileri":
-            GPIO.output(self.motor_pins["DC Motor 1 IN1"], GPIO.HIGH)
-            GPIO.output(self.motor_pins["DC Motor 1 IN2"], GPIO.LOW)
-            GPIO.output(self.motor_pins["DC Motor 2 IN1"], GPIO.HIGH)
-            GPIO.output(self.motor_pins["DC Motor 2 IN2"], GPIO.LOW)
-            GPIO.output(self.motor_pins["DC Motor 3 IN1"], GPIO.HIGH)
-            GPIO.output(self.motor_pins["DC Motor 3 IN2"], GPIO.LOW)
-            GPIO.output(self.motor_pins["DC Motor 4 IN1"], GPIO.HIGH)
-            GPIO.output(self.motor_pins["DC Motor 4 IN2"], GPIO.LOW)
-        elif direction == "geri":
-            GPIO.output(self.motor_pins["DC Motor 1 IN1"], GPIO.LOW)
-            GPIO.output(self.motor_pins["DC Motor 1 IN2"], GPIO.HIGH)
-            GPIO.output(self.motor_pins["DC Motor 2 IN1"], GPIO.LOW)
-            GPIO.output(self.motor_pins["DC Motor 2 IN2"], GPIO.HIGH)
-            GPIO.output(self.motor_pins["DC Motor 3 IN1"], GPIO.LOW)
-            GPIO.output(self.motor_pins["DC Motor 3 IN2"], GPIO.HIGH)
-            GPIO.output(self.motor_pins["DC Motor 4 IN1"], GPIO.LOW)
-            GPIO.output(self.motor_pins["DC Motor 4 IN2"], GPIO.HIGH)
+    
 
     def activate_motors(self, motors):
         for motor in motors:
