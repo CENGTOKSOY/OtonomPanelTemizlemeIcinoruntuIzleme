@@ -4,21 +4,6 @@ import time
 import RPi.GPIO as GPIO
 
 
-class Robot:
-    def __init__(self):
-        self.motor_pins = {
-            "DC Motor 1 IN1": 17,  # Sol ön tekerlek IN1
-            "DC Motor 1 IN2": 27,  # Sol ön tekerlek IN2
-            "DC Motor 2 IN1": 18,  # Sağ ön tekerlek IN1
-            "DC Motor 2 IN2": 22,  # Sağ ön tekerlek IN2
-            "DC Motor 3 IN1": 23,  # Sol arka tekerlek IN1
-            "DC Motor 3 IN2": 24,  # Sol arka tekerlek IN2
-            "DC Motor 4 IN1": 25,  # Sağ arka tekerlek IN1
-            "DC Motor 4 IN2": 4,  # Sağ arka tekerlek IN2
-            "DC Motor 5": 5  # Temizleme silindiri
-        }
-        self.water_pump_pin = 6  # Su pompası
-        self.setup_gpio()
 
     def setup_gpio(self):
         GPIO.setmode(GPIO.BCM)
