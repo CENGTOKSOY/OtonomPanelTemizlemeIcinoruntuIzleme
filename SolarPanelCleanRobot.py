@@ -133,3 +133,7 @@ try:
 except KeyboardInterrupt:
     print("Program sonlandırıldı.")
 
+finally:
+    camera.release()
+    cv2.destroyAllWindows()
+    GPIO.cleanup()
