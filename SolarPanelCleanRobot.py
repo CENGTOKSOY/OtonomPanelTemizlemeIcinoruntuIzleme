@@ -132,7 +132,4 @@ try:
         time.sleep(1)
 except KeyboardInterrupt:
     print("Program sonlandırıldı.")
-finally:
-    camera.release()
-    cv2.destroyAllWindows()
-    GPIO.cleanup()
+
