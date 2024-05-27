@@ -111,6 +111,15 @@ if not camera.isOpened():
 
 ret, original_frame = camera.read()
 
+if not ret:
+    print("Kamera hatası!")
+    exit()
+original_gray = cv2.cvtColor(original_frame, cv2.COLOR_BGR2GRAY)
+
+robot = Robot()
+
+original_image = cv2.imread('clean_panel_image.png')  # Temiz panelin orijinal görüntüsü
+original_gray_static = cv2.cvtColor(original_image, cv2.COLOR_BGR2GRAY)
 
 try:
     while True:
