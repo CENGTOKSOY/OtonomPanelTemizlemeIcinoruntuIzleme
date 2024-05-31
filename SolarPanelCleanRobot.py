@@ -5,6 +5,21 @@ import RPi.GPIO as GPIO
 
 class Robot:
  
+    def __init__(self):
+        self.motor_pins = {
+            "DC Motor 1 IN1": 17,  # Sol ön tekerlek IN1
+            "DC Motor 1 IN2": 27,  # Sol ön tekerlek IN2
+            "DC Motor 2 IN1": 18,  # Sağ ön tekerlek IN1
+            "DC Motor 2 IN2": 22,  # Sağ ön tekerlek IN2
+            "DC Motor 3 IN1": 23,  # Sol arka tekerlek IN1
+            "DC Motor 3 IN2": 24,  # Sol arka tekerlek IN2
+            "DC Motor 4 IN1": 25,  # Sağ arka tekerlek IN1
+            "DC Motor 4 IN2": 4,  # Sağ arka tekerlek IN2
+            "DC Motor 5": 5  # Temizleme silindiri
+        }
+        self.water_pump_pin = 6  # Su pompası
+        self.setup_gpio()a
+
 
     def setup_gpio(self):
         GPIO.setmode(GPIO.BCM)
@@ -108,20 +123,4 @@ robot = Robot()
 original_image = cv2.imread('clean_panel_image.png')  # Temiz panelin orijinal görüntüsü
 original_gray_static = cv2.cvtColor(original_image, cv2.COLOR_BGR2GRAY)
 
-try:
-    while True:
-        if scan_surface(camera, original_gray_static):
-            robot.move_robot("dur")
-            robot.start_cleaning()
-            time.sleep(2)
-            robot.stop_cleaning()
-        else:
-            robot.move_robot("ileri", 1)
-        time.sleep(1)
-except KeyboardInterrupt:
-    print("Program sonlandırıldı.")
 
-finally:
-    camera.release()
-    cv2.destroyAllWindows()
-    GPIO.cleanup()
