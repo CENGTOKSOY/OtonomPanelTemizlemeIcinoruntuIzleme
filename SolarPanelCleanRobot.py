@@ -88,17 +88,6 @@ class Robot:
         print("Su pompası durduruluyor...")
 
 
-def scan_surface(camera, original_image):
-    ret, frame = camera.read()
-    if not ret:
-        print("Kamera hatası!")
-        return False
-
-    gray_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    difference = cv2.absdiff(original_image, gray_frame)
-    _, thresh = cv2.threshold(difference, 30, 255, cv2.THRESH_BINARY)
-    contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
-
     if len(contours) > 0:
         print("Kir tespit edildi!")
         return True
@@ -114,6 +103,15 @@ if not camera.isOpened():
 ret, original_frame = camera.read()
 
 
+if not ret:
+    print("Kamera hatası!")
+    exit()
+original_gray = cv2.cvtColor(original_frame, cv2.COLOR_BGR2GRAY)
+
+robot = Robot()
+
+original_image = cv2.imread('clean_panel_image.png')  # Temiz panelin orijinal görüntüsü
+original_gray_static = cv2.cvtColor(original_image, cv2.COLOR_BGR2GRAY)
 
 try:
     while True:
